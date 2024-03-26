@@ -1,0 +1,15 @@
+{
+  "name": "fridge-butler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Leelu55/fridge-butler.git",
+  "author": "Maria Yalpani <maria@yalpani.de>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "start:frontend": "yarn workspace fridge-butler-frontend dev",
+    "start:backend": "yarn workspace fridge-butler-backend start:dev",
+    "build": "yarn workspace fridge-butler-frontend build && yarn workspace fridge-butler-backend build"
+  }
+}
