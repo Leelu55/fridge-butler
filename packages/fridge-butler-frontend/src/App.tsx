@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <h1>Fridge Butler</h1>
-      <h2>Your happy fridge helper</h2>
+      <h2>Your very happy fridge helper</h2>
       <HealthCheck></HealthCheck>
     </>
   )
