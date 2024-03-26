@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class HealthController {
   @Get()
   checkHealth(): string {
-    return 'Fridge-Butler backend is running smoothly!';
+    return 'Fridge-Butler backend is running!';
   }
 }

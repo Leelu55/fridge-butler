@@ -2,11 +2,13 @@
   "name": "fridge-butler-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/src/main",
+  "main": "dist/src/main.js",
   "scripts": {
     "build": "nest build",
     "start:dev": "nest build && nest start --watch",
-    "start:prod": "node ."
+    "start:prod": "node dist/src/main.js",
+    "start": "npm run start:prod"
+
   },
   "keywords": [],
   "author": "",

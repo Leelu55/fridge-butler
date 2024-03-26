@@ -10,6 +10,7 @@
   "scripts": {
     "start:frontend": "yarn workspace fridge-butler-frontend dev",
     "start:backend": "yarn workspace fridge-butler-backend start:dev",
-    "build": "yarn workspace fridge-butler-frontend build && yarn workspace fridge-butler-backend build"
+    "build": "yarn workspace fridge-butler-frontend build && yarn workspace fridge-butler-backend build",
+    "start": "yarn workspace fridge-butler-backend start:prod"
   }
 }
