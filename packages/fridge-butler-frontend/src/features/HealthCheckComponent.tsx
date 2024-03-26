@@ -4,7 +4,7 @@ function HealthCheck() {
   const [healthStatus, setHealthStatus] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/health')
+    fetch('fridge-butler-env.eba-85rzizg4.eu-central-1.elasticbeanstalk.com/health')
       .then(response => response.text())
       .then(message => setHealthStatus(message))
       .catch(error => console.error('Error fetching health status:', error));
