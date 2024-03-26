@@ -24,6 +24,7 @@ jobs:
       - name: Build application
         run: npm run build
 
+
       - name: Install AWS EB CLI
         run: |
           sudo apt-get update
@@ -32,6 +33,10 @@ jobs:
 
       - name: Configure AWS credentials
         run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+
+      - name: Initialize EB CLI
+        run: eb init -r ${{ secrets.AWS_REGION }} -p 'Node.js 20 running on 64bit Amazon Linux 2023/6.1.1' --profile default
 
       - name: Deploy to Elastic Beanstalk
         run: eb deploy fridge-butler --profile default
