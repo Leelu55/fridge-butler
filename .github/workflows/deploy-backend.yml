@@ -36,7 +36,7 @@ jobs:
 
 
       - name: Initialize EB CLI
-        run: eb init -r ${{ secrets.AWS_REGION }} -p 'Node.js 20 running on 64bit Amazon Linux 2023/6.1.1' --profile default
+        run: eb init -r ${{ secrets.AWS_REGION }} -p nodejs -i node.js-20 -d --profile default
 
       - name: Deploy to Elastic Beanstalk
         run: eb deploy fridge-butler --profile default
