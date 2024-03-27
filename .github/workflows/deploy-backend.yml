@@ -36,7 +36,7 @@ jobs:
 
 
       - name: Initialize EB CLI
-        run: cd packages/fridge-butler-backend/dist && eb init -r ${{ secrets.AWS_REGION }} -p node.js-20 --profile default
+        run: cd packages/fridge-butler-backend && eb init -r ${{ secrets.AWS_REGION }} -p node.js-20 
 
       - name: Deploy to Elastic Beanstalk
-        run: cd packages/fridge-butler-backend/dist && eb deploy fridge-butler-env-new  --profile default
+        run: cd packages/fridge-butler-backend && eb deploy fridge-butler-env-new
