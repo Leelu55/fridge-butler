@@ -1,22 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
-import FormData from 'form-data';
+import { OpenAI } from 'openai';
+
 
 @Injectable()
 export class UploadsService {
-  async analyzeImage(file: Express.Multer.File, prompt: string): Promise<any> {
-    const formData = new FormData();
-    const fileBlob = new Blob([file.buffer], { type: file.mimetype });
-    formData.append('file', fileBlob, file.originalname);
-    formData.append('prompt', prompt);
+    private openai: OpenAI;
+    constructor() {
+      this.openai = new OpenAI();
+    }
 
-    const response = await axios.post('YOUR_API_ENDPOINT', formData, {
-      headers: {
-        ...formData.getHeaders(),
-        'Authorization': `Bearer YOUR_API_KEY`,
-      },
+    async createChatCompletionWithImage(file: Express.Multer.File, prompt: string) {
+    const imageBase64 = file.buffer.toString('base64');
+    const imageUrl = `data:image/jpeg;base64,${imageBase64}`;
+
+    const response = await this.openai.chat.completions.create({
+      model: "gpt-4-vision-preview", 
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: prompt },
+            { type: "image_url", "image_url": {"url": imageUrl }}
+          ]
+        }
+      ]
     });
 
-    return response.data;
+    return response.choices[0].message;
   }
 }
+

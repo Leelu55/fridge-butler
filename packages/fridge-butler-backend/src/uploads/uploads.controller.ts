@@ -8,6 +8,6 @@ export class UploadsController {
     @Post()
     @UseInterceptors(FileInterceptor('file'))
     async uploadFile(@UploadedFile() file: Express.Multer.File, @Body('prompt') prompt: string) {
-      return this.uploadsService.analyzeImage(file, prompt);
+      return this.uploadsService.createChatCompletionWithImage(file, prompt);
     }
 }
